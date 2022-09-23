@@ -139,7 +139,7 @@ public:
 
         try {
             count++;
-            const TextMessage* textMessage = dynamic_cast<const TextMessage*>(message);
+            auto textMessage = dynamic_cast<const TextMessage*>(message);
             string text = "";
 
             if (textMessage != NULL) {
