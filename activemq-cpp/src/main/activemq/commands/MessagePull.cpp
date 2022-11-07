@@ -49,7 +49,7 @@ MessagePull::~MessagePull() {
 
 ////////////////////////////////////////////////////////////////////////////////
 MessagePull* MessagePull::cloneDataStructure() const {
-    std::unique_ptr<MessagePull> messagePull(new MessagePull());
+    std::auto_ptr<MessagePull> messagePull(new MessagePull());
 
     // Copy the data from the base class or classes
     messagePull->copyDataStructure(this);

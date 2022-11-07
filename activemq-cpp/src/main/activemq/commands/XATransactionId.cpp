@@ -89,7 +89,7 @@ XATransactionId::~XATransactionId() {
 
 ////////////////////////////////////////////////////////////////////////////////
 XATransactionId* XATransactionId::cloneDataStructure() const {
-    std::unique_ptr<XATransactionId> xATransactionId(new XATransactionId());
+    std::auto_ptr<XATransactionId> xATransactionId(new XATransactionId());
 
     // Copy the data from the base class or classes
     xATransactionId->copyDataStructure(this);

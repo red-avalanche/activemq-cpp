@@ -41,7 +41,7 @@ namespace commands {
     class AMQCPP_API ActiveMQMessageTemplate: public T, public Message {
     private:
 
-        std::unique_ptr<wireformat::openwire::utils::MessagePropertyInterceptor> propertiesInterceptor;
+        std::auto_ptr<wireformat::openwire::utils::MessagePropertyInterceptor> propertiesInterceptor;
 
     public:
 

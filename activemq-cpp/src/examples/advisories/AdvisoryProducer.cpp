@@ -44,9 +44,9 @@ AdvisoryProducer::AdvisoryProducer( cms::Session* session ) : consumerOnline(fal
             __FILE__, __LINE__, "Session Object passed was Null." );
     }
 
-    std::unique_ptr<cms::Topic> destination( session->createTopic(
+    std::auto_ptr<cms::Topic> destination( session->createTopic(
         "HEART-BEAT-CHANNEL" ) );
-    std::unique_ptr<cms::Topic> advisories( session->createTopic(
+    std::auto_ptr<cms::Topic> advisories( session->createTopic(
         "ActiveMQ.Advisory.Consumer.Topic.HEART-BEAT-CHANNEL" ) );
 
     this->producer.reset( session->createProducer( destination.get() ) );
@@ -71,7 +71,7 @@ void AdvisoryProducer::run() {
 
         if( this->consumerOnline ) {
 
-            std::unique_ptr<cms::TextMessage> message(
+            std::auto_ptr<cms::TextMessage> message(
                 this->session->createTextMessage( "Alive" ) );
 
             this->producer->send( message.get() );

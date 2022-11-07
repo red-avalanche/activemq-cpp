@@ -33,7 +33,7 @@ CmsMessageCreator::~CmsMessageCreator() {
 
 ////////////////////////////////////////////////////////////////////////////////
 cms::Message* CmsMessageCreator::createMessage(cms::Session* session) {
-    std::unique_ptr<cms::Message> message;
+    std::auto_ptr<cms::Message> message;
 
     if (session) {
         message.reset(session->createTextMessage(text));

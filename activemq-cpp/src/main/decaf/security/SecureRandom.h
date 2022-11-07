@@ -34,7 +34,7 @@ namespace security {
     class DECAF_API SecureRandom : public decaf::util::Random {
     private:
 
-        std::unique_ptr<SecureRandomSpi> secureRandom;
+        std::auto_ptr<SecureRandomSpi> secureRandom;
 
     public:
 

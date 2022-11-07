@@ -195,8 +195,8 @@ namespace core {
         long long consumerFailoverRedeliveryWaitPeriod;
         bool consumerExpiryCheckEnabled;
 
-        std::unique_ptr<PrefetchPolicy> defaultPrefetchPolicy;
-        std::unique_ptr<RedeliveryPolicy> defaultRedeliveryPolicy;
+        std::auto_ptr<PrefetchPolicy> defaultPrefetchPolicy;
+        std::auto_ptr<RedeliveryPolicy> defaultRedeliveryPolicy;
 
         cms::ExceptionListener* exceptionListener;
         cms::MessageTransformer* transformer;
@@ -728,7 +728,7 @@ void ActiveMQConnection::close() {
 
             // We need to use a copy since we aren't able to use CopyOnWriteArrayList
             ArrayList<Pointer<ActiveMQSessionKernel> > sessions(this->config->activeSessions);
-            std::unique_ptr<Iterator<Pointer<ActiveMQSessionKernel> > > iter(sessions.iterator());
+            std::auto_ptr<Iterator<Pointer<ActiveMQSessionKernel> > > iter(sessions.iterator());
 
             // Dispose of all the Session resources we know are still open.
             while (iter->hasNext()) {
@@ -816,7 +816,7 @@ void ActiveMQConnection::cleanup() {
         try {
             // We need to use a copy since we aren't able to use CopyOnWriteArrayList
             ArrayList<Pointer<ActiveMQSessionKernel> > sessions(this->config->activeSessions);
-            std::unique_ptr<Iterator<Pointer<ActiveMQSessionKernel> > > iter(sessions.iterator());
+            std::auto_ptr<Iterator<Pointer<ActiveMQSessionKernel> > > iter(sessions.iterator());
 
             // Dispose of all the Session resources we know are still open.
             while (iter->hasNext()) {
@@ -868,7 +868,7 @@ void ActiveMQConnection::start() {
                 this->config->sessionsLock.readLock().lock();
 
                 // Start all the sessions.
-                std::unique_ptr<Iterator<Pointer<ActiveMQSessionKernel> > > iter(this->config->activeSessions.iterator());
+                std::auto_ptr<Iterator<Pointer<ActiveMQSessionKernel> > > iter(this->config->activeSessions.iterator());
                 while (iter->hasNext()) {
                     iter->next()->start();
                 }
@@ -895,7 +895,7 @@ void ActiveMQConnection::stop() {
             // new messages.
             if (this->started.compareAndSet(true, false)) {
                 this->config->sessionsLock.readLock().lock();
-                std::unique_ptr<Iterator<Pointer<ActiveMQSessionKernel> > > iter(this->config->activeSessions.iterator());
+                std::auto_ptr<Iterator<Pointer<ActiveMQSessionKernel> > > iter(this->config->activeSessions.iterator());
 
                 while (iter->hasNext()) {
                     iter->next()->stop();
@@ -1151,7 +1151,7 @@ void ActiveMQConnection::onConsumerControl(Pointer<commands::Command> command) {
     this->config->sessionsLock.readLock().lock();
     try {
         // Get the complete list of active sessions.
-        std::unique_ptr<Iterator<Pointer<ActiveMQSessionKernel> > > iter(this->config->activeSessions.iterator());
+        std::auto_ptr<Iterator<Pointer<ActiveMQSessionKernel> > > iter(this->config->activeSessions.iterator());
 
         while (iter->hasNext()) {
             Pointer<ActiveMQSessionKernel> session = iter->next();
@@ -1218,7 +1218,7 @@ void ActiveMQConnection::transportInterrupted() {
 
     this->config->sessionsLock.readLock().lock();
     try {
-        std::unique_ptr<Iterator<Pointer<ActiveMQSessionKernel> > > sessions(this->config->activeSessions.iterator());
+        std::auto_ptr<Iterator<Pointer<ActiveMQSessionKernel> > > sessions(this->config->activeSessions.iterator());
         while (sessions->hasNext()) {
             sessions->next()->clearMessagesInProgress(this->config->transportInterruptionProcessingComplete);
         }

@@ -34,7 +34,7 @@ namespace test {
     class CMSTestFixture : public CppUnit::TestFixture {
     protected:
 
-        std::unique_ptr<util::CMSProvider> cmsProvider;
+        std::auto_ptr<util::CMSProvider> cmsProvider;
 
     public:
 

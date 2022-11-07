@@ -39,7 +39,7 @@ unsigned char ActiveMQQueue::getDataStructureType() const {
 
 ////////////////////////////////////////////////////////////////////////////////
 ActiveMQQueue* ActiveMQQueue::cloneDataStructure() const {
-    std::unique_ptr<ActiveMQQueue> message( new ActiveMQQueue() );
+    std::auto_ptr<ActiveMQQueue> message( new ActiveMQQueue() );
     message->copyDataStructure( this );
     return message.release();
 }

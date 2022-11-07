@@ -65,14 +65,14 @@ int main( int argc AMQCPP_UNUSED, char* argv[] AMQCPP_UNUSED ) {
     }
 
     // Create the Session
-    std::unique_ptr<cms::Session> session( connection->createSession() );
+    std::auto_ptr<cms::Session> session( connection->createSession() );
 
     // Start the Connection now.
     connection->start();
 
     // Create a Temporary Topic and Queue.
-    std::unique_ptr<cms::Destination> tempTopic( session->createTemporaryTopic() );
-    std::unique_ptr<cms::Destination> tempQueue( session->createTemporaryQueue() );
+    std::auto_ptr<cms::Destination> tempTopic( session->createTemporaryTopic() );
+    std::auto_ptr<cms::Destination> tempQueue( session->createTemporaryQueue() );
 
     // Give the Broker some time
     Thread::sleep( 2000 );

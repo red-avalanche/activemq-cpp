@@ -40,14 +40,14 @@ using namespace decaf::lang::exceptions;
 
 ////////////////////////////////////////////////////////////////////////////////
 MessageAck::MessageAck() :
-    BaseCommand(), destination(NULL), transactionId(NULL), consumerId(NULL), ackType(0), firstMessageId(NULL), lastMessageId(NULL),
+    BaseCommand(), destination(NULL), transactionId(NULL), consumerId(NULL), ackType(0), firstMessageId(NULL), lastMessageId(NULL), 
       messageCount(0), poisonCause(NULL) {
 
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 MessageAck::MessageAck(const Pointer<Message>& message, int ackType, int messageCount) :
-    BaseCommand(), destination(NULL), transactionId(NULL), consumerId(NULL), ackType(0), firstMessageId(NULL), lastMessageId(NULL),
+    BaseCommand(), destination(NULL), transactionId(NULL), consumerId(NULL), ackType(0), firstMessageId(NULL), lastMessageId(NULL), 
       messageCount(0), poisonCause(NULL) {
 
     this->ackType = (unsigned char)ackType;
@@ -58,7 +58,7 @@ MessageAck::MessageAck(const Pointer<Message>& message, int ackType, int message
 
 ////////////////////////////////////////////////////////////////////////////////
 MessageAck::MessageAck(const Pointer<MessageDispatch>& dispatch, int ackType, int messageCount) :
-    BaseCommand(), destination(NULL), transactionId(NULL), consumerId(NULL), ackType(0), firstMessageId(NULL), lastMessageId(NULL),
+    BaseCommand(), destination(NULL), transactionId(NULL), consumerId(NULL), ackType(0), firstMessageId(NULL), lastMessageId(NULL), 
       messageCount(0), poisonCause(NULL) {
 
     this->ackType = (unsigned char)ackType;
@@ -74,7 +74,7 @@ MessageAck::~MessageAck() {
 
 ////////////////////////////////////////////////////////////////////////////////
 MessageAck* MessageAck::cloneDataStructure() const {
-    std::unique_ptr<MessageAck> messageAck(new MessageAck());
+    std::auto_ptr<MessageAck> messageAck(new MessageAck());
 
     // Copy the data from the base class or classes
     messageAck->copyDataStructure(this);

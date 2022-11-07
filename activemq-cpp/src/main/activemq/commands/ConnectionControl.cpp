@@ -39,7 +39,7 @@ using namespace decaf::lang::exceptions;
 
 ////////////////////////////////////////////////////////////////////////////////
 ConnectionControl::ConnectionControl() :
-    BaseCommand(), close(false), exit(false), faultTolerant(false), resume(false), suspend(false), connectedBrokers(""), reconnectTo(""),
+    BaseCommand(), close(false), exit(false), faultTolerant(false), resume(false), suspend(false), connectedBrokers(""), reconnectTo(""), 
       rebalanceConnection(false), token() {
 
 }
@@ -50,7 +50,7 @@ ConnectionControl::~ConnectionControl() {
 
 ////////////////////////////////////////////////////////////////////////////////
 ConnectionControl* ConnectionControl::cloneDataStructure() const {
-    std::unique_ptr<ConnectionControl> connectionControl(new ConnectionControl());
+    std::auto_ptr<ConnectionControl> connectionControl(new ConnectionControl());
 
     // Copy the data from the base class or classes
     connectionControl->copyDataStructure(this);

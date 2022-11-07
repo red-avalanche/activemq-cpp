@@ -40,7 +40,7 @@ unsigned char ActiveMQBlobMessage::getDataStructureType() const {
 
 ////////////////////////////////////////////////////////////////////////////////
 ActiveMQBlobMessage* ActiveMQBlobMessage::cloneDataStructure() const {
-    std::unique_ptr<ActiveMQBlobMessage> message( new ActiveMQBlobMessage() );
+    std::auto_ptr<ActiveMQBlobMessage> message( new ActiveMQBlobMessage() );
     message->copyDataStructure( this );
     return message.release();
 }

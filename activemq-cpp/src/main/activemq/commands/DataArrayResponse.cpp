@@ -49,7 +49,7 @@ DataArrayResponse::~DataArrayResponse() {
 
 ////////////////////////////////////////////////////////////////////////////////
 DataArrayResponse* DataArrayResponse::cloneDataStructure() const {
-    std::unique_ptr<DataArrayResponse> dataArrayResponse(new DataArrayResponse());
+    std::auto_ptr<DataArrayResponse> dataArrayResponse(new DataArrayResponse());
 
     // Copy the data from the base class or classes
     dataArrayResponse->copyDataStructure(this);

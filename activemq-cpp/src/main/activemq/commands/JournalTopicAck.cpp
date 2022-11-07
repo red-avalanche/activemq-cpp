@@ -49,7 +49,7 @@ JournalTopicAck::~JournalTopicAck() {
 
 ////////////////////////////////////////////////////////////////////////////////
 JournalTopicAck* JournalTopicAck::cloneDataStructure() const {
-    std::unique_ptr<JournalTopicAck> journalTopicAck(new JournalTopicAck());
+    std::auto_ptr<JournalTopicAck> journalTopicAck(new JournalTopicAck());
 
     // Copy the data from the base class or classes
     journalTopicAck->copyDataStructure(this);

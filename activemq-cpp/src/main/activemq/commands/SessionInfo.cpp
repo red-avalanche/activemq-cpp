@@ -50,7 +50,7 @@ SessionInfo::~SessionInfo() {
 
 ////////////////////////////////////////////////////////////////////////////////
 SessionInfo* SessionInfo::cloneDataStructure() const {
-    std::unique_ptr<SessionInfo> sessionInfo(new SessionInfo());
+    std::auto_ptr<SessionInfo> sessionInfo(new SessionInfo());
 
     // Copy the data from the base class or classes
     sessionInfo->copyDataStructure(this);

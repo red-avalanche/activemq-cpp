@@ -56,7 +56,7 @@ ProducerId::ProducerId(const ProducerId& other) :
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-ProducerId::ProducerId( const SessionId& sessionId, long long consumerId ) :
+ProducerId::ProducerId( const SessionId& sessionId, long long consumerId ) : 
     BaseDataStructure(), connectionId(""), value(0), sessionId(0), parentId() {
 
     this->connectionId = sessionId.getConnectionId();
@@ -85,7 +85,7 @@ ProducerId::~ProducerId() {
 
 ////////////////////////////////////////////////////////////////////////////////
 ProducerId* ProducerId::cloneDataStructure() const {
-    std::unique_ptr<ProducerId> producerId(new ProducerId());
+    std::auto_ptr<ProducerId> producerId(new ProducerId());
 
     // Copy the data from the base class or classes
     producerId->copyDataStructure(this);

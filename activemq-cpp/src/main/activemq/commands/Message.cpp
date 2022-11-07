@@ -44,10 +44,10 @@ using namespace decaf::lang::exceptions;
 
 ////////////////////////////////////////////////////////////////////////////////
 Message::Message() :
-    BaseCommand(), producerId(NULL), destination(NULL), transactionId(NULL), originalDestination(NULL), messageId(NULL), originalTransactionId(NULL),
-      groupID(""), groupSequence(0), correlationId(""), persistent(false), expiration(0), priority(0), replyTo(NULL), timestamp(0),
-      type(""), content(), marshalledProperties(), dataStructure(NULL), targetConsumerId(NULL), compressed(false), redeliveryCounter(0),
-      brokerPath(), arrival(0), userID(""), recievedByDFBridge(false), droppable(false), cluster(), brokerInTime(0), brokerOutTime(0),
+    BaseCommand(), producerId(NULL), destination(NULL), transactionId(NULL), originalDestination(NULL), messageId(NULL), originalTransactionId(NULL), 
+      groupID(""), groupSequence(0), correlationId(""), persistent(false), expiration(0), priority(0), replyTo(NULL), timestamp(0), 
+      type(""), content(), marshalledProperties(), dataStructure(NULL), targetConsumerId(NULL), compressed(false), redeliveryCounter(0), 
+      brokerPath(), arrival(0), userID(""), recievedByDFBridge(false), droppable(false), cluster(), brokerInTime(0), brokerOutTime(0), 
       jMSXGroupFirstForConsumer(false), ackHandler(NULL), properties(), readOnlyProperties(false), readOnlyBody(false), connection(NULL) {
 
 }
@@ -58,7 +58,7 @@ Message::~Message() {
 
 ////////////////////////////////////////////////////////////////////////////////
 Message* Message::cloneDataStructure() const {
-    std::unique_ptr<Message> message(new Message());
+    std::auto_ptr<Message> message(new Message());
 
     // Copy the data from the base class or classes
     message->copyDataStructure(this);

@@ -41,7 +41,7 @@ namespace advisories {
     private:
 
         cms::Session* session;
-        std::unique_ptr<cms::MessageConsumer> consumer;
+        std::auto_ptr<cms::MessageConsumer> consumer;
 
     private:
 

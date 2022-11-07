@@ -54,7 +54,7 @@ void ResourceLifecycleManager::destroyResources() {
 
     try {
 
-        std::unique_ptr<Iterator<Resource*> > iterator(this->resources.iterator());
+        std::auto_ptr<Iterator<Resource*> > iterator(this->resources.iterator());
 
         while (iterator->hasNext()) {
             delete iterator->next();

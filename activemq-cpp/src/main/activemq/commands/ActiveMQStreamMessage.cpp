@@ -111,7 +111,7 @@ unsigned char ActiveMQStreamMessage::getDataStructureType() const {
 
 ////////////////////////////////////////////////////////////////////////////////
 ActiveMQStreamMessage* ActiveMQStreamMessage::cloneDataStructure() const {
-    std::unique_ptr<ActiveMQStreamMessage> message(new ActiveMQStreamMessage());
+    std::auto_ptr<ActiveMQStreamMessage> message(new ActiveMQStreamMessage());
     message->copyDataStructure(this);
     return message.release();
 }

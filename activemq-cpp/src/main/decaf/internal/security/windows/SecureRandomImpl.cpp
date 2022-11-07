@@ -50,7 +50,7 @@ namespace security {
 
     public:
 
-        std::unique_ptr<Random> random;
+        std::auto_ptr<Random> random;
 
         SRNGData() : random() {
         }

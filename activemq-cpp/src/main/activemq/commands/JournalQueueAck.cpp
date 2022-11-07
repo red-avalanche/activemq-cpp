@@ -49,7 +49,7 @@ JournalQueueAck::~JournalQueueAck() {
 
 ////////////////////////////////////////////////////////////////////////////////
 JournalQueueAck* JournalQueueAck::cloneDataStructure() const {
-    std::unique_ptr<JournalQueueAck> journalQueueAck(new JournalQueueAck());
+    std::auto_ptr<JournalQueueAck> journalQueueAck(new JournalQueueAck());
 
     // Copy the data from the base class or classes
     journalQueueAck->copyDataStructure(this);

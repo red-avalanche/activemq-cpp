@@ -68,25 +68,25 @@ OpenwireAdvisoryTest::~OpenwireAdvisoryTest() {
 ////////////////////////////////////////////////////////////////////////////////
 void OpenwireAdvisoryTest::testConnectionAdvisories() {
 
-    std::unique_ptr<ConnectionFactory> factory(ConnectionFactory::createCMSConnectionFactory(getBrokerURL()));
+    std::auto_ptr<ConnectionFactory> factory(ConnectionFactory::createCMSConnectionFactory(getBrokerURL()));
     CPPUNIT_ASSERT(factory.get() != NULL);
 
-    std::unique_ptr<Connection> connection(factory->createConnection());
+    std::auto_ptr<Connection> connection(factory->createConnection());
     CPPUNIT_ASSERT(connection.get() != NULL);
 
-    std::unique_ptr<Session> session(connection->createSession());
+    std::auto_ptr<Session> session(connection->createSession());
     CPPUNIT_ASSERT(session.get() != NULL);
 
-    std::unique_ptr<Destination> destination(session->createTopic("ActiveMQ.Advisory.Connection"));
-    std::unique_ptr<MessageConsumer> consumer(session->createConsumer(destination.get()));
+    std::auto_ptr<Destination> destination(session->createTopic("ActiveMQ.Advisory.Connection"));
+    std::auto_ptr<MessageConsumer> consumer(session->createConsumer(destination.get()));
 
     connection->start();
 
-    std::unique_ptr<Connection> otherConnection(factory->createConnection());
+    std::auto_ptr<Connection> otherConnection(factory->createConnection());
     CPPUNIT_ASSERT(otherConnection.get() != NULL);
     otherConnection->start();
 
-    std::unique_ptr<cms::Message> message;
+    std::auto_ptr<cms::Message> message;
     int connectionInfoCount = 0;
 
     do {
@@ -162,7 +162,7 @@ namespace {
 ////////////////////////////////////////////////////////////////////////////////
 void OpenwireAdvisoryTest::testConcurrentTempDestCreation() {
 
-    std::unique_ptr<ConnectionFactory> factory(
+    std::auto_ptr<ConnectionFactory> factory(
         ConnectionFactory::createCMSConnectionFactory(getBrokerURL()));
 
     ConnectionLoadThread thread1(factory.get());

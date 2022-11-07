@@ -109,7 +109,7 @@ namespace {
 
                 while (!done) {
 
-                    std::unique_ptr<Socket> socket(server->accept());
+                    std::auto_ptr<Socket> socket(server->accept());
                     socket->setSoLinger(false, 0);
 
                     // Immediate fail sometimes.

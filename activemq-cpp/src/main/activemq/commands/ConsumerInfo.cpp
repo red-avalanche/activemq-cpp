@@ -39,9 +39,9 @@ using namespace decaf::lang::exceptions;
 
 ////////////////////////////////////////////////////////////////////////////////
 ConsumerInfo::ConsumerInfo() :
-    BaseCommand(), consumerId(NULL), browser(false), destination(NULL), prefetchSize(0), maximumPendingMessageLimit(0), dispatchAsync(false),
-      selector(""), clientId(""), subscriptionName(""), noLocal(false), exclusive(false), retroactive(false), priority(0),
-      brokerPath(), additionalPredicate(NULL), networkSubscription(false), optimizedAcknowledge(false), noRangeAcks(false),
+    BaseCommand(), consumerId(NULL), browser(false), destination(NULL), prefetchSize(0), maximumPendingMessageLimit(0), dispatchAsync(false), 
+      selector(""), clientId(""), subscriptionName(""), noLocal(false), exclusive(false), retroactive(false), priority(0), 
+      brokerPath(), additionalPredicate(NULL), networkSubscription(false), optimizedAcknowledge(false), noRangeAcks(false), 
       networkConsumerPath() {
 
 }
@@ -52,7 +52,7 @@ ConsumerInfo::~ConsumerInfo() {
 
 ////////////////////////////////////////////////////////////////////////////////
 ConsumerInfo* ConsumerInfo::cloneDataStructure() const {
-    std::unique_ptr<ConsumerInfo> consumerInfo(new ConsumerInfo());
+    std::auto_ptr<ConsumerInfo> consumerInfo(new ConsumerInfo());
 
     // Copy the data from the base class or classes
     consumerInfo->copyDataStructure(this);
