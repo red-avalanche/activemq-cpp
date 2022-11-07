@@ -263,7 +263,7 @@ public class CommandSourceGenerator extends CommandCodeGenerator {
     protected void generateCloneDataStructureBody( PrintWriter out ) {
         String newInstance = decapitalize( getClassName() );
 
-        out.println("    std::auto_ptr<"+getClassName()+"> "+newInstance+"(new "+getClassName()+"());");
+        out.println("    std::unique_ptr<"+getClassName()+"> "+newInstance+"(new "+getClassName()+"());");
         out.println("");
         out.println("    // Copy the data from the base class or classes");
         out.println("    "+newInstance+"->copyDataStructure(this);");

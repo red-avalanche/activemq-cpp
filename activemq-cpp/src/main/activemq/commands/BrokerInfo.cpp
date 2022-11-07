@@ -39,8 +39,8 @@ using namespace decaf::lang::exceptions;
 
 ////////////////////////////////////////////////////////////////////////////////
 BrokerInfo::BrokerInfo() :
-    BaseCommand(), brokerId(NULL), brokerURL(""), peerBrokerInfos(), brokerName(""), slaveBroker(false), masterBroker(false), 
-      faultTolerantConfiguration(false), duplexConnection(false), networkConnection(false), connectionId(0), brokerUploadUrl(""), 
+    BaseCommand(), brokerId(NULL), brokerURL(""), peerBrokerInfos(), brokerName(""), slaveBroker(false), masterBroker(false),
+      faultTolerantConfiguration(false), duplexConnection(false), networkConnection(false), connectionId(0), brokerUploadUrl(""),
       networkProperties("") {
 
 }
@@ -51,7 +51,7 @@ BrokerInfo::~BrokerInfo() {
 
 ////////////////////////////////////////////////////////////////////////////////
 BrokerInfo* BrokerInfo::cloneDataStructure() const {
-    std::auto_ptr<BrokerInfo> brokerInfo(new BrokerInfo());
+    std::unique_ptr<BrokerInfo> brokerInfo(new BrokerInfo());
 
     // Copy the data from the base class or classes
     brokerInfo->copyDataStructure(this);
