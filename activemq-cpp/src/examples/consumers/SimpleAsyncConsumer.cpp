@@ -124,6 +124,7 @@ public:
 
             // Create a MessageConsumer from the Session to the Topic or Queue
             consumer = session->createConsumer(destination);
+
             consumer->setMessageListener(this);
 
         } catch (CMSException& e) {
