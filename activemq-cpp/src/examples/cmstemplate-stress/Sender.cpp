@@ -31,11 +31,11 @@ using namespace cmstemplate;
 
 ////////////////////////////////////////////////////////////////////////////////
 Sender::Sender(const string& url, const string& queueOrTopicName, bool isTopic, bool isDeliveryPersistent, int timeToLive) :
-    cmsTemplateMutex(), cmsTemplate(NULL) {
+    cmsTemplateMutex(), cmsTemplate(nullptr) {
 
     ConnectionFactory* connectionFactory = ConnectionFactoryMgr::getConnectionFactory(url);
 
-    cmsTemplate.reset(new CmsTemplate(connectionFactory));
+    cmsTemplate = std::make_unique<CmsTemplate>(connectionFactory);
     cmsTemplate->setExplicitQosEnabled(true);
     cmsTemplate->setDefaultDestinationName(queueOrTopicName);
     cmsTemplate->setPubSubDomain(isTopic);
@@ -47,7 +47,7 @@ Sender::Sender(const string& url, const string& queueOrTopicName, bool isTopic, 
 Sender::~Sender() {
     try {
         cmsTemplateMutex.lock();
-        cmsTemplate.reset(NULL);
+        cmsTemplate.reset();
         cmsTemplateMutex.unlock();
     } catch (...) {
     }

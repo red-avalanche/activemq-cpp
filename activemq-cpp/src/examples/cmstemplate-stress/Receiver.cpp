@@ -45,7 +45,7 @@ Receiver::Receiver(const string & url, const string & queueOrTopicName,
         closing(false),
         ready(1),
         messageListener(NULL),
-        cmsTemplate(NULL),
+        cmsTemplate(nullptr),
         asyncReceiverThread(NULL),
         receiveTimeout(receiveTimeout),
         bUseThreadPool(useThreadPool),
@@ -53,7 +53,7 @@ Receiver::Receiver(const string & url, const string & queueOrTopicName,
         numOfMessagingTasks(0) {
 
     ConnectionFactory* connectionFactory = ConnectionFactoryMgr::getConnectionFactory(url);
-    cmsTemplate.reset(new CmsTemplate(connectionFactory));
+    cmsTemplate = std::make_unique<CmsTemplate>(connectionFactory);
     cmsTemplate->setDefaultDestinationName(queueOrTopicName);
     cmsTemplate->setPubSubDomain(isTopic);
     cmsTemplate->setReceiveTimeout(receiveTimeout);
