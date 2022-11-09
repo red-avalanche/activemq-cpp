@@ -50,7 +50,7 @@ namespace cmstemplate {
         bool closing;
         decaf::util::concurrent::CountDownLatch ready;
         ReceiverListener* messageListener;
-        std::auto_ptr<activemq::cmsutil::CmsTemplate> cmsTemplate;
+        std::unique_ptr<activemq::cmsutil::CmsTemplate> cmsTemplate;
         std::auto_ptr<decaf::lang::Thread> asyncReceiverThread;
         long long receiveTimeout;
         bool bUseThreadPool;

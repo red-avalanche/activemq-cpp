@@ -49,10 +49,10 @@ int main( int argc AMQCPP_UNUSED, char* argv[] AMQCPP_UNUSED ) {
     std::string brokerURI = "failover:(tcp://127.0.0.1:61616)";
 
     // Create the Connection
-    auto_ptr<cms::ConnectionFactory> connectionFactory(
+    unique_ptr<cms::ConnectionFactory> connectionFactory(
         cms::ConnectionFactory::createCMSConnectionFactory( brokerURI ) );
 
-    auto_ptr<cms::Connection> connection;
+    unique_ptr<cms::Connection> connection;
 
     // Create a Connection
     try{
@@ -63,7 +63,7 @@ int main( int argc AMQCPP_UNUSED, char* argv[] AMQCPP_UNUSED ) {
     }
 
     // Create the Session
-    std::auto_ptr<cms::Session> session( connection->createSession() );
+    std::unique_ptr<cms::Session> session( connection->createSession() );
 
     // Create the producer and run it.
     AdvisoryConsumer advisoryConsumer( session.get() );
