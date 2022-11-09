@@ -197,7 +197,7 @@ case "${host_os}" in
     if ! test "$GCC" = "yes"; then
        # Assuming Sun Compiler and adding in optimization
        # because autoconf can't seem to figure it out.
-       PLAT_CXXFLAGS="-mt -w -O5"
+       PLAT_CXXFLAGS="-std=c++14 -mt -w -O5"
     fi
     ;;
 
@@ -205,7 +205,7 @@ case "${host_os}" in
 
     if ! test "$GCC" = "yes"; then
        # Assuming aCC Compiler unknown yet if any additional settings are needed.
-       PLAT_CXXFLAGS=""
+       PLAT_CXXFLAGS="-std=c++14 "
     fi
     ;;
 
@@ -213,7 +213,7 @@ case "${host_os}" in
 
     if ! test "$GCC" = "yes"; then
        # Assuming aCC Compiler unknown yet if any additional settings are needed.
-       PLAT_CXXFLAGS="-AA"
+       PLAT_CXXFLAGS="-std=c++14 -AA"
     fi
     ;;
 
@@ -224,7 +224,7 @@ case "${host_os}" in
 esac
 
 if test "$GCC" = "yes"; then
-   PLAT_CXXFLAGS="-ansi -pedantic"
+   PLAT_CXXFLAGS="-std=c++14 -ansi -pedantic"
 fi
 
 ## find and configure the Apache Decaf Library
@@ -245,7 +245,7 @@ if test "$use_ssl" = "yes"; then
     DECAF_CONFIGURE_SSL
 fi
 
-DECAF_CXXFLAGS="$APR_CPPFLAGS $APR_INCLUDES $APU_INCLUDES $OPENSSL_INCLUDES"
+DECAF_CXXFLAGS="-std=c++14 $APR_CPPFLAGS $APR_INCLUDES $APU_INCLUDES $OPENSSL_INCLUDES"
 DECAF_CFLAGS="$APR_CFLAGS $APR_INCLUDES $APU_INCLUDES $OPENSSL_INCLUDES"
 DECAF_LIBS="$APR_LIBS $APR_LDFLAGS $APU_LIBS $APU_LDFLAGS $OPENSSL_LIBS $OPENSSL_LDFLAGS"
 
